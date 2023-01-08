@@ -749,7 +749,7 @@ namespace System_WareHouse
             // TODO: This line of code loads data into the 'sale_DWDataSet.DimStores' table. You can move, or remove it, as needed.
             this.dimStoresTableAdapter.Fill(this.sale_DWDataSet.DimStores);
             //ProductGetx();
-            //StoreGetx();
+            StoreGetx();
 
         }
 
@@ -881,6 +881,7 @@ namespace System_WareHouse
             cbPSAltkey.Text = "";
             txtPSStoreID.Text = "";
             txtPSProductID.Text = "";
+            txtPSCusID.Text = "";
             txtPSSaleID.Text = "";
             txtPSQuantity.Text = "";
             txtPSTotalCost.Text = "";
@@ -961,19 +962,19 @@ namespace System_WareHouse
            // }
         //}
 
-        //private void StoreGetx()
-        //{
-          //  string mainconn = ConfigurationManager.ConnectionStrings["System_WareHouse.Properties.Settings.Sale_DWConnectionString"].ConnectionString;
-           // SqlConnection sqlconn = new SqlConnection(mainconn);
-           // string sqlquery = "select * from DimStores";
-            //SqlCommand sqlcomm = new SqlCommand(sqlquery, sqlconn);
-            //sqlconn.Open();
-            //SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
-            //DataTable dt = new DataTable();
-            //sda.Fill(dt);
-            //txtPSStoreID.DisplayMember = "StoreID";
-            //txtPSStoreID.DataSource = dt;
-        //}
+        private void StoreGetx()
+        {
+            string mainconn = ConfigurationManager.ConnectionStrings["System_WareHouse.Properties.Settings.Sale_DWConnectionString"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            string sqlquery = "select StoreID from DimStores";
+            SqlCommand sqlcomm = new SqlCommand(sqlquery, sqlconn);
+            sqlconn.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            cbPersonStore.DisplayMember = "StoreID";
+            cbPersonStore.DataSource = dt;
+        }
 
 
 
@@ -1170,6 +1171,81 @@ namespace System_WareHouse
 
         }
 
-       
+        private void cbPersonStore_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //StoreGetx();
+        }
+
+        private void cbPersonStore_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //StoreGetx();
+        }
+
+        private void btnPersonUpdate_Click(object sender, EventArgs e)
+        {
+
+            if (txtPersonID.Text == "")
+            {
+                MessageBox.Show("Please Add a Key");
+                return;
+            }
+            if (txtPersonName.Text == "")
+            {
+                MessageBox.Show("Please Add a Name");
+                return;
+            }
+            if (txtPersonCity.Text == "")
+            {
+                MessageBox.Show("Please Add a ProductCost");
+                return;
+            }
+            if (txtPersonState.Text == "")
+            {
+                MessageBox.Show("Please Add a ProductSale");
+                return;
+            }
+            if (txtPersonCountry.Text == "")
+            {
+                MessageBox.Show("Please Add a ProductSale");
+                return;
+            }
+            else if (txtPersonID.Text != "" && txtPersonName.Text != "" && txtPersonCity.Text != "" && txtPersonCountry.Text != "")
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("update DimSalesPerson set "
+                                                   + "SalesPersonAltID = @SPAID,"
+                                                   + "SalesPersonName = @SPN, "
+                                                   + "StoreID = @SPSID,"
+                                                   + "City = @SPC,"
+                                                   + "State = @SPS,"
+                                                   + "Country = @SPT"
+                                                   + " where SalesPersonID = @SPID", conn);
+                    cmd.Parameters.AddWithValue("@SPAID ",txtPersonID.Text);
+                    cmd.Parameters.AddWithValue("@SPN", txtPersonName.Text);
+                    cmd.Parameters.AddWithValue("@SPSID",cbPersonStore.SelectedIndex.ToString());
+                    cmd.Parameters.AddWithValue("@SPC", txtPersonCity.Text);
+                    cmd.Parameters.AddWithValue("@SPS", txtPersonState.Text);
+                    cmd.Parameters.AddWithValue("@SPT", txtPersonCountry.Text);
+                    cmd.Parameters.AddWithValue("@SPID", key);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("SalesPerson Update");
+                    conn.Close();
+                    GetAllSalePerson();
+                    key = 0;
+                    ClearSales();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("There's been a problem ==>" + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }
+

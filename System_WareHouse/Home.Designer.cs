@@ -93,6 +93,16 @@ namespace System_WareHouse
             this.label15 = new System.Windows.Forms.Label();
             this.PersonID = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.txtPSSaleID = new System.Windows.Forms.TextBox();
+            this.txtPSCusID = new System.Windows.Forms.TextBox();
+            this.PSSalesDGV = new System.Windows.Forms.DataGridView();
+            this.label33 = new System.Windows.Forms.Label();
+            this.txtPSStoreID = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.PSCustomerDGV = new System.Windows.Forms.DataGridView();
+            this.PSStoreDGV = new System.Windows.Forms.DataGridView();
             this.txtPSProductID = new System.Windows.Forms.TextBox();
             this.txtPSTotalCost = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -104,10 +114,6 @@ namespace System_WareHouse
             this.btnPSAdd = new System.Windows.Forms.Button();
             this.txtPSQuantity = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.dimSalesPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sale_DWDataSet3 = new System_WareHouse.Sale_DWDataSet3();
-            this.dimCustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sale_DWDataSet1 = new System_WareHouse.Sale_DWDataSet1();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -120,22 +126,17 @@ namespace System_WareHouse
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.dimSalesPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sale_DWDataSet3 = new System_WareHouse.Sale_DWDataSet3();
+            this.dimCustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sale_DWDataSet1 = new System_WareHouse.Sale_DWDataSet1();
             this.dimStoresTableAdapter = new System_WareHouse.Sale_DWDataSetTableAdapters.DimStoresTableAdapter();
             this.dimCustomerTableAdapter = new System_WareHouse.Sale_DWDataSet1TableAdapters.DimCustomerTableAdapter();
             this.sale_DWDataSet2 = new System_WareHouse.Sale_DWDataSet2();
             this.dimProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dimProductTableAdapter = new System_WareHouse.Sale_DWDataSet2TableAdapters.DimProductTableAdapter();
             this.dimSalesPersonTableAdapter = new System_WareHouse.Sale_DWDataSet3TableAdapters.DimSalesPersonTableAdapter();
-            this.PSStoreDGV = new System.Windows.Forms.DataGridView();
-            this.PSCustomerDGV = new System.Windows.Forms.DataGridView();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.txtPSStoreID = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.PSSalesDGV = new System.Windows.Forms.DataGridView();
-            this.txtPSCusID = new System.Windows.Forms.TextBox();
-            this.txtPSSaleID = new System.Windows.Forms.TextBox();
+            this.btnPersonUpdate = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductDGV)).BeginInit();
@@ -148,6 +149,9 @@ namespace System_WareHouse
             ((System.ComponentModel.ISupportInitialize)(this.dimStoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet)).BeginInit();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PSSalesDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PSCustomerDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PSStoreDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSProductDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSalesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dimSalesPersonBindingSource)).BeginInit();
@@ -156,25 +160,24 @@ namespace System_WareHouse
             ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dimProductBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSStoreDGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSCustomerDGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSSalesDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDangXuat
             // 
             this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnDangXuat.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangXuat.Location = new System.Drawing.Point(854, 715);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(70, 37);
             this.btnDangXuat.TabIndex = 0;
-            this.btnDangXuat.Text = "DangXuat";
+            this.btnDangXuat.Text = "LogOut";
             this.btnDangXuat.UseVisualStyleBackColor = false;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnClose.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(955, 715);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(67, 37);
@@ -349,7 +352,7 @@ namespace System_WareHouse
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1262, 687);
+            this.tabPage2.Size = new System.Drawing.Size(1262, 675);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Customer";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -477,7 +480,7 @@ namespace System_WareHouse
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1262, 687);
+            this.tabPage3.Size = new System.Drawing.Size(1262, 675);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Store";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -628,6 +631,7 @@ namespace System_WareHouse
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnPersonUpdate);
             this.tabPage4.Controls.Add(this.PersonDGV);
             this.tabPage4.Controls.Add(this.cbPersonStore);
             this.tabPage4.Controls.Add(this.btnPersonDelete);
@@ -645,7 +649,7 @@ namespace System_WareHouse
             this.tabPage4.Controls.Add(this.PersonID);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1262, 687);
+            this.tabPage4.Size = new System.Drawing.Size(1262, 675);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "SalesPerson";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -659,24 +663,24 @@ namespace System_WareHouse
             this.PersonDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.PersonDGV.BackgroundColor = System.Drawing.Color.White;
             this.PersonDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PersonDGV.Location = new System.Drawing.Point(41, 223);
+            this.PersonDGV.Location = new System.Drawing.Point(41, 201);
             this.PersonDGV.MultiSelect = false;
             this.PersonDGV.Name = "PersonDGV";
             this.PersonDGV.ReadOnly = true;
             this.PersonDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PersonDGV.Size = new System.Drawing.Size(658, 301);
+            this.PersonDGV.Size = new System.Drawing.Size(658, 323);
             this.PersonDGV.TabIndex = 15;
             this.PersonDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PersonDGV_CellContentClick);
             // 
             // cbPersonStore
             // 
-            this.cbPersonStore.DataSource = this.dimStoresBindingSource;
-            this.cbPersonStore.DisplayMember = "StoreID";
             this.cbPersonStore.FormattingEnabled = true;
             this.cbPersonStore.Location = new System.Drawing.Point(118, 121);
             this.cbPersonStore.Name = "cbPersonStore";
             this.cbPersonStore.Size = new System.Drawing.Size(153, 21);
             this.cbPersonStore.TabIndex = 14;
+            this.cbPersonStore.SelectedIndexChanged += new System.EventHandler(this.cbPersonStore_SelectedIndexChanged);
+            this.cbPersonStore.SelectionChangeCommitted += new System.EventHandler(this.cbPersonStore_SelectionChangeCommitted);
             // 
             // dimStoresBindingSource
             // 
@@ -690,7 +694,7 @@ namespace System_WareHouse
             // 
             // btnPersonDelete
             // 
-            this.btnPersonDelete.Location = new System.Drawing.Point(611, 95);
+            this.btnPersonDelete.Location = new System.Drawing.Point(611, 120);
             this.btnPersonDelete.Name = "btnPersonDelete";
             this.btnPersonDelete.Size = new System.Drawing.Size(75, 23);
             this.btnPersonDelete.TabIndex = 13;
@@ -841,6 +845,124 @@ namespace System_WareHouse
             this.tabPage5.UseVisualStyleBackColor = true;
             this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
             // 
+            // txtPSSaleID
+            // 
+            this.txtPSSaleID.Location = new System.Drawing.Point(267, 150);
+            this.txtPSSaleID.Name = "txtPSSaleID";
+            this.txtPSSaleID.Size = new System.Drawing.Size(118, 20);
+            this.txtPSSaleID.TabIndex = 45;
+            // 
+            // txtPSCusID
+            // 
+            this.txtPSCusID.Location = new System.Drawing.Point(266, 63);
+            this.txtPSCusID.Name = "txtPSCusID";
+            this.txtPSCusID.Size = new System.Drawing.Size(118, 20);
+            this.txtPSCusID.TabIndex = 44;
+            // 
+            // PSSalesDGV
+            // 
+            this.PSSalesDGV.AllowUserToAddRows = false;
+            this.PSSalesDGV.AllowUserToDeleteRows = false;
+            this.PSSalesDGV.AllowUserToResizeColumns = false;
+            this.PSSalesDGV.AllowUserToResizeRows = false;
+            this.PSSalesDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.PSSalesDGV.BackgroundColor = System.Drawing.Color.White;
+            this.PSSalesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PSSalesDGV.Location = new System.Drawing.Point(1030, 36);
+            this.PSSalesDGV.Margin = new System.Windows.Forms.Padding(0);
+            this.PSSalesDGV.MultiSelect = false;
+            this.PSSalesDGV.Name = "PSSalesDGV";
+            this.PSSalesDGV.ReadOnly = true;
+            this.PSSalesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PSSalesDGV.Size = new System.Drawing.Size(212, 207);
+            this.PSSalesDGV.TabIndex = 43;
+            this.PSSalesDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PSSalesDGV_CellContentClick);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(1103, 16);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(43, 16);
+            this.label33.TabIndex = 42;
+            this.label33.Text = "Sales";
+            // 
+            // txtPSStoreID
+            // 
+            this.txtPSStoreID.Location = new System.Drawing.Point(266, 20);
+            this.txtPSStoreID.Name = "txtPSStoreID";
+            this.txtPSStoreID.Size = new System.Drawing.Size(118, 20);
+            this.txtPSStoreID.TabIndex = 41;
+            this.txtPSStoreID.TextChanged += new System.EventHandler(this.txtPSStoreID_TextChanged);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(888, 17);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(68, 16);
+            this.label32.TabIndex = 40;
+            this.label32.Text = "Customer";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(703, 17);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(42, 16);
+            this.label31.TabIndex = 39;
+            this.label31.Text = "Store";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(469, 16);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(57, 16);
+            this.label30.TabIndex = 38;
+            this.label30.Text = "Product";
+            // 
+            // PSCustomerDGV
+            // 
+            this.PSCustomerDGV.AllowUserToAddRows = false;
+            this.PSCustomerDGV.AllowUserToDeleteRows = false;
+            this.PSCustomerDGV.AllowUserToResizeColumns = false;
+            this.PSCustomerDGV.AllowUserToResizeRows = false;
+            this.PSCustomerDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.PSCustomerDGV.BackgroundColor = System.Drawing.Color.White;
+            this.PSCustomerDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PSCustomerDGV.Location = new System.Drawing.Point(813, 36);
+            this.PSCustomerDGV.MultiSelect = false;
+            this.PSCustomerDGV.Name = "PSCustomerDGV";
+            this.PSCustomerDGV.ReadOnly = true;
+            this.PSCustomerDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PSCustomerDGV.Size = new System.Drawing.Size(203, 204);
+            this.PSCustomerDGV.TabIndex = 37;
+            this.PSCustomerDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PSCustomerDGV_CellContentClick);
+            // 
+            // PSStoreDGV
+            // 
+            this.PSStoreDGV.AllowUserToAddRows = false;
+            this.PSStoreDGV.AllowUserToDeleteRows = false;
+            this.PSStoreDGV.AllowUserToResizeColumns = false;
+            this.PSStoreDGV.AllowUserToResizeRows = false;
+            this.PSStoreDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.PSStoreDGV.BackgroundColor = System.Drawing.Color.White;
+            this.PSStoreDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PSStoreDGV.Location = new System.Drawing.Point(626, 36);
+            this.PSStoreDGV.Margin = new System.Windows.Forms.Padding(0);
+            this.PSStoreDGV.MultiSelect = false;
+            this.PSStoreDGV.Name = "PSStoreDGV";
+            this.PSStoreDGV.ReadOnly = true;
+            this.PSStoreDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PSStoreDGV.Size = new System.Drawing.Size(175, 204);
+            this.PSStoreDGV.TabIndex = 36;
+            this.PSStoreDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PSStoreID_CellContentClick);
+            // 
             // txtPSProductID
             // 
             this.txtPSProductID.Location = new System.Drawing.Point(266, 107);
@@ -953,26 +1075,6 @@ namespace System_WareHouse
             this.label27.TabIndex = 16;
             this.label27.Text = "Quantity";
             // 
-            // dimSalesPersonBindingSource
-            // 
-            this.dimSalesPersonBindingSource.DataMember = "DimSalesPerson";
-            this.dimSalesPersonBindingSource.DataSource = this.sale_DWDataSet3;
-            // 
-            // sale_DWDataSet3
-            // 
-            this.sale_DWDataSet3.DataSetName = "Sale_DWDataSet3";
-            this.sale_DWDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dimCustomerBindingSource
-            // 
-            this.dimCustomerBindingSource.DataMember = "DimCustomer";
-            this.dimCustomerBindingSource.DataSource = this.sale_DWDataSet1;
-            // 
-            // sale_DWDataSet1
-            // 
-            this.sale_DWDataSet1.DataSetName = "Sale_DWDataSet1";
-            this.sale_DWDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // label26
             // 
             this.label26.AutoSize = true;
@@ -1004,21 +1106,65 @@ namespace System_WareHouse
             // 
             this.cbPSAltkey.FormattingEnabled = true;
             this.cbPSAltkey.Items.AddRange(new object[] {
-            "121907",
-            "122159",
-            "122159",
-            "143335",
-            "143335",
-            "121907",
-            "121907",
-            "162846",
-            "162846",
-            "162909",
-            "162909",
-            "184310",
-            "184310",
-            "204757",
-            "204757",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59",
             "100",
             "101",
             "102",
@@ -1958,7 +2104,32 @@ namespace System_WareHouse
             "1636",
             "1637",
             "1638",
-            "1639"});
+            "1639",
+            "121907",
+            "121907",
+            "121907",
+            "122159",
+            "122159",
+            "143335",
+            "143335",
+            "143335",
+            "143335",
+            "121907",
+            "121907",
+            "122159",
+            "122159",
+            "143335",
+            "143335",
+            "121907",
+            "121907",
+            "162846",
+            "162846",
+            "162909",
+            "162909",
+            "184310",
+            "184310",
+            "204757",
+            "204757"});
             this.cbPSAltkey.Location = new System.Drawing.Point(70, 147);
             this.cbPSAltkey.Name = "cbPSAltkey";
             this.cbPSAltkey.Size = new System.Drawing.Size(126, 21);
@@ -2789,6 +2960,26 @@ namespace System_WareHouse
             this.label14.TabIndex = 0;
             this.label14.Text = "SaleNumber";
             // 
+            // dimSalesPersonBindingSource
+            // 
+            this.dimSalesPersonBindingSource.DataMember = "DimSalesPerson";
+            this.dimSalesPersonBindingSource.DataSource = this.sale_DWDataSet3;
+            // 
+            // sale_DWDataSet3
+            // 
+            this.sale_DWDataSet3.DataSetName = "Sale_DWDataSet3";
+            this.sale_DWDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dimCustomerBindingSource
+            // 
+            this.dimCustomerBindingSource.DataMember = "DimCustomer";
+            this.dimCustomerBindingSource.DataSource = this.sale_DWDataSet1;
+            // 
+            // sale_DWDataSet1
+            // 
+            this.sale_DWDataSet1.DataSetName = "Sale_DWDataSet1";
+            this.sale_DWDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // dimStoresTableAdapter
             // 
             this.dimStoresTableAdapter.ClearBeforeFill = true;
@@ -2815,123 +3006,15 @@ namespace System_WareHouse
             // 
             this.dimSalesPersonTableAdapter.ClearBeforeFill = true;
             // 
-            // PSStoreDGV
+            // btnPersonUpdate
             // 
-            this.PSStoreDGV.AllowUserToAddRows = false;
-            this.PSStoreDGV.AllowUserToDeleteRows = false;
-            this.PSStoreDGV.AllowUserToResizeColumns = false;
-            this.PSStoreDGV.AllowUserToResizeRows = false;
-            this.PSStoreDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.PSStoreDGV.BackgroundColor = System.Drawing.Color.White;
-            this.PSStoreDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PSStoreDGV.Location = new System.Drawing.Point(626, 36);
-            this.PSStoreDGV.Margin = new System.Windows.Forms.Padding(0);
-            this.PSStoreDGV.MultiSelect = false;
-            this.PSStoreDGV.Name = "PSStoreDGV";
-            this.PSStoreDGV.ReadOnly = true;
-            this.PSStoreDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PSStoreDGV.Size = new System.Drawing.Size(175, 204);
-            this.PSStoreDGV.TabIndex = 36;
-            this.PSStoreDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PSStoreID_CellContentClick);
-            // 
-            // PSCustomerDGV
-            // 
-            this.PSCustomerDGV.AllowUserToAddRows = false;
-            this.PSCustomerDGV.AllowUserToDeleteRows = false;
-            this.PSCustomerDGV.AllowUserToResizeColumns = false;
-            this.PSCustomerDGV.AllowUserToResizeRows = false;
-            this.PSCustomerDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.PSCustomerDGV.BackgroundColor = System.Drawing.Color.White;
-            this.PSCustomerDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PSCustomerDGV.Location = new System.Drawing.Point(813, 36);
-            this.PSCustomerDGV.MultiSelect = false;
-            this.PSCustomerDGV.Name = "PSCustomerDGV";
-            this.PSCustomerDGV.ReadOnly = true;
-            this.PSCustomerDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PSCustomerDGV.Size = new System.Drawing.Size(203, 204);
-            this.PSCustomerDGV.TabIndex = 37;
-            this.PSCustomerDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PSCustomerDGV_CellContentClick);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(469, 16);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(57, 16);
-            this.label30.TabIndex = 38;
-            this.label30.Text = "Product";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(703, 17);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(42, 16);
-            this.label31.TabIndex = 39;
-            this.label31.Text = "Store";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(888, 17);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(68, 16);
-            this.label32.TabIndex = 40;
-            this.label32.Text = "Customer";
-            // 
-            // txtPSStoreID
-            // 
-            this.txtPSStoreID.Location = new System.Drawing.Point(266, 20);
-            this.txtPSStoreID.Name = "txtPSStoreID";
-            this.txtPSStoreID.Size = new System.Drawing.Size(118, 20);
-            this.txtPSStoreID.TabIndex = 41;
-            this.txtPSStoreID.TextChanged += new System.EventHandler(this.txtPSStoreID_TextChanged);
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(1103, 16);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(43, 16);
-            this.label33.TabIndex = 42;
-            this.label33.Text = "Sales";
-            // 
-            // PSSalesDGV
-            // 
-            this.PSSalesDGV.AllowUserToAddRows = false;
-            this.PSSalesDGV.AllowUserToDeleteRows = false;
-            this.PSSalesDGV.AllowUserToResizeColumns = false;
-            this.PSSalesDGV.AllowUserToResizeRows = false;
-            this.PSSalesDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.PSSalesDGV.BackgroundColor = System.Drawing.Color.White;
-            this.PSSalesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PSSalesDGV.Location = new System.Drawing.Point(1030, 36);
-            this.PSSalesDGV.Margin = new System.Windows.Forms.Padding(0);
-            this.PSSalesDGV.MultiSelect = false;
-            this.PSSalesDGV.Name = "PSSalesDGV";
-            this.PSSalesDGV.ReadOnly = true;
-            this.PSSalesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PSSalesDGV.Size = new System.Drawing.Size(212, 207);
-            this.PSSalesDGV.TabIndex = 43;
-            this.PSSalesDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PSSalesDGV_CellContentClick);
-            // 
-            // txtPSCusID
-            // 
-            this.txtPSCusID.Location = new System.Drawing.Point(266, 63);
-            this.txtPSCusID.Name = "txtPSCusID";
-            this.txtPSCusID.Size = new System.Drawing.Size(118, 20);
-            this.txtPSCusID.TabIndex = 44;
-            // 
-            // txtPSSaleID
-            // 
-            this.txtPSSaleID.Location = new System.Drawing.Point(267, 150);
-            this.txtPSSaleID.Name = "txtPSSaleID";
-            this.txtPSSaleID.Size = new System.Drawing.Size(118, 20);
-            this.txtPSSaleID.TabIndex = 45;
+            this.btnPersonUpdate.Location = new System.Drawing.Point(611, 71);
+            this.btnPersonUpdate.Name = "btnPersonUpdate";
+            this.btnPersonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnPersonUpdate.TabIndex = 16;
+            this.btnPersonUpdate.Text = "UPDATE";
+            this.btnPersonUpdate.UseVisualStyleBackColor = true;
+            this.btnPersonUpdate.Click += new System.EventHandler(this.btnPersonUpdate_Click);
             // 
             // Home
             // 
@@ -2942,6 +3025,7 @@ namespace System_WareHouse
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDangXuat);
             this.Name = "Home";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Home_FormClosed);
@@ -2963,6 +3047,9 @@ namespace System_WareHouse
             ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PSSalesDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PSCustomerDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PSStoreDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSProductDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSalesDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dimSalesPersonBindingSource)).EndInit();
@@ -2971,9 +3058,6 @@ namespace System_WareHouse
             ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dimProductBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSStoreDGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSCustomerDGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSSalesDGV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3086,5 +3170,6 @@ namespace System_WareHouse
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox txtPSCusID;
         private System.Windows.Forms.TextBox txtPSSaleID;
+        private System.Windows.Forms.Button btnPersonUpdate;
     }
 }

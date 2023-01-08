@@ -83,3 +83,7 @@ C:\Users\Poisedon\source\repos\System_WareHouse\System_WareHouse\obj\Debug\Syste
 C:\Users\Poisedon\source\repos\System_WareHouse\System_WareHouse\obj\Debug\System_WareHouse.csproj.CopyComplete
 C:\Users\Poisedon\source\repos\System_WareHouse\System_WareHouse\obj\Debug\System_WareHouse.exe
 C:\Users\Poisedon\source\repos\System_WareHouse\System_WareHouse\obj\Debug\System_WareHouse.pdb
+C:\Users\Poisedon\source\repos\System_WareHouse\System_WareHouse\bin\Debug\System_WareHouse.exe.manifest
+C:\Users\Poisedon\source\repos\System_WareHouse\System_WareHouse\bin\Debug\System_WareHouse.application
+C:\Users\Poisedon\source\repos\System_WareHouse\System_WareHouse\obj\Debug\System_WareHouse.exe.manifest
+C:\Users\Poisedon\source\repos\System_WareHouse\System_WareHouse\obj\Debug\System_WareHouse.application
