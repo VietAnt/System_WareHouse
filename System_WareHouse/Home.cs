@@ -16,7 +16,7 @@ namespace System_WareHouse
     {
 
         public bool isExit = true;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Sale_DW;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=TestSales_DW;Integrated Security=True");
         int key = 0;
       
 
@@ -32,6 +32,7 @@ namespace System_WareHouse
             DisplayStoreID();
             DisplayCustomerID();
             DisplaySalesID();
+            GetStoreSP();
             conn.Open();
             Clear();
         }
@@ -661,7 +662,7 @@ namespace System_WareHouse
                         "values (@SPID,@SPN,@SID,@SPC,@SPS,@SPT)", conn);
                     cmd.Parameters.AddWithValue("@SPID", txtPersonID.Text);
                     cmd.Parameters.AddWithValue("@SPN", txtPersonName.Text);
-                    cmd.Parameters.AddWithValue("@SID", cbPersonStore.SelectedIndex.ToString());
+                    cmd.Parameters.AddWithValue("@SID", txtSPStore.Text);
                     cmd.Parameters.AddWithValue("@SPC", txtPersonCity.Text);
                     cmd.Parameters.AddWithValue("@SPS", txtPersonState.Text);
                     cmd.Parameters.AddWithValue("@SPT", txtPersonCountry.Text);
@@ -689,7 +690,7 @@ namespace System_WareHouse
         {
             txtPersonID.Text = "";
             txtPersonName.Text = "";
-            cbPersonStore.Text = "";
+            txtSPStore.Text = "";
             txtPersonCity.Text = "";
             txtPersonState.Text = "";
             txtPersonCountry.Text = "";
@@ -732,7 +733,7 @@ namespace System_WareHouse
             key = Convert.ToInt32(PersonDGV.SelectedRows[0].Cells[0].Value.ToString());
             txtPersonID.Text = PersonDGV.SelectedRows[0].Cells[1].Value.ToString();
             txtPersonName.Text = PersonDGV.SelectedRows[0].Cells[2].Value.ToString();
-            cbPersonStore.Text = PersonDGV.SelectedRows[0].Cells[3].Value.ToString();
+            txtSPStore.Text = PersonDGV.SelectedRows[0].Cells[3].Value.ToString();
             txtPersonCity.Text = PersonDGV.SelectedRows[0].Cells[4].Value.ToString();
             txtPersonState.Text = PersonDGV.SelectedRows[0].Cells[5].Value.ToString();
             txtPersonCountry.Text = PersonDGV.SelectedRows[0].Cells[6].Value.ToString();
@@ -749,7 +750,11 @@ namespace System_WareHouse
             // TODO: This line of code loads data into the 'sale_DWDataSet.DimStores' table. You can move, or remove it, as needed.
             this.dimStoresTableAdapter.Fill(this.sale_DWDataSet.DimStores);
             //ProductGetx();
-            StoreGetx();
+            // StoreGetx();
+
+            //-----///
+            DisplayProduct();
+
 
         }
 
@@ -962,19 +967,19 @@ namespace System_WareHouse
            // }
         //}
 
-        private void StoreGetx()
-        {
-            string mainconn = ConfigurationManager.ConnectionStrings["System_WareHouse.Properties.Settings.Sale_DWConnectionString"].ConnectionString;
-            SqlConnection sqlconn = new SqlConnection(mainconn);
-            string sqlquery = "select StoreID from DimStores";
-            SqlCommand sqlcomm = new SqlCommand(sqlquery, sqlconn);
-            sqlconn.Open();
-            SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            cbPersonStore.DisplayMember = "StoreID";
-            cbPersonStore.DataSource = dt;
-        }
+       // private void StoreGetx()
+        //{
+          //  string mainconn = ConfigurationManager.ConnectionStrings["System_WareHouse.Properties.Settings.Sale_DWConnectionString"].ConnectionString;
+          //  SqlConnection sqlconn = new SqlConnection(mainconn);
+          //  string sqlquery = "select StoreID from DimStores";
+           // SqlCommand sqlcomm = new SqlCommand(sqlquery, sqlconn);
+           // sqlconn.Open();
+            //SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
+            //DataTable dt = new DataTable();
+            //sda.Fill(dt);
+            //cb.DisplayMember = "StoreID";
+            //cb.DataSource = dt;
+        //}
 
 
 
@@ -994,6 +999,7 @@ namespace System_WareHouse
                 sda.Fill(ds);
                 PSProductDGV.DataSource = ds.Tables[0];
                 conn.Close();
+                
             }
             catch (Exception ex)
             {
@@ -1009,6 +1015,7 @@ namespace System_WareHouse
 
         private void PSProductDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+           
             txtPSActualCost.Text = PSProductDGV.SelectedRows[0].Cells[1].Value.ToString();
             txtPSTotalCost.Text = PSProductDGV.SelectedRows[0].Cells[2].Value.ToString();
             txtPSProductID.Text = PSProductDGV.SelectedRows[0].Cells[0].Value.ToString();
@@ -1209,7 +1216,7 @@ namespace System_WareHouse
                 MessageBox.Show("Please Add a ProductSale");
                 return;
             }
-            else if (txtPersonID.Text != "" && txtPersonName.Text != "" && txtPersonCity.Text != "" && txtPersonCountry.Text != "")
+            else if (txtPersonID.Text != "" && txtPersonName.Text != ""  && txtPersonCity.Text != "" && txtPersonState.Text != "" && txtPersonCountry.Text != "")
             {
                 try
                 {
@@ -1217,22 +1224,22 @@ namespace System_WareHouse
                     SqlCommand cmd = new SqlCommand("update DimSalesPerson set "
                                                    + "SalesPersonAltID = @SPAID,"
                                                    + "SalesPersonName = @SPN, "
-                                                   + "StoreID = @SPSID,"
+                                                   + "StoreID = @SSID,"
                                                    + "City = @SPC,"
                                                    + "State = @SPS,"
                                                    + "Country = @SPT"
-                                                   + " where SalesPersonID = @SPID", conn);
+                                                + "  where SalesPersonID = @SID", conn);
                     cmd.Parameters.AddWithValue("@SPAID ",txtPersonID.Text);
                     cmd.Parameters.AddWithValue("@SPN", txtPersonName.Text);
-                    cmd.Parameters.AddWithValue("@SPSID",cbPersonStore.SelectedIndex.ToString());
+                    cmd.Parameters.AddWithValue("@SSID",txtSPStore.Text);
                     cmd.Parameters.AddWithValue("@SPC", txtPersonCity.Text);
                     cmd.Parameters.AddWithValue("@SPS", txtPersonState.Text);
                     cmd.Parameters.AddWithValue("@SPT", txtPersonCountry.Text);
-                    cmd.Parameters.AddWithValue("@SPID", key);
+                    cmd.Parameters.AddWithValue("@SID", key);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("SalesPerson Update");
                     conn.Close();
-                    GetAllSalePerson();
+                    GetAllSalePerson(); 
                     key = 0;
                     ClearSales();
                 }
@@ -1245,6 +1252,73 @@ namespace System_WareHouse
                     conn.Close();
                 }
             }
+        }
+
+      
+        private void txtPersonState_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SPStroreDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtSPStore.Text = SPStroreDGV.SelectedRows[0].Cells[0].Value.ToString();
+            if (txtSPStore.Text == "")
+            {
+                key = 0;
+            }
+            else
+            {
+                key = Convert.ToInt32(SPStroreDGV.SelectedRows[0].Cells[0].Value.ToString());
+            }
+        }
+
+        void GetStoreSP()
+        {
+
+            try
+            {
+                conn.Open();
+                string Query = "select StoreID,StoreName,StoreLocation,City,Country from  DimStores";
+                SqlDataAdapter sda = new SqlDataAdapter(Query, conn);
+                var ds = new DataSet();
+                sda.Fill(ds);
+                SPStroreDGV.DataSource = ds.Tables[0];
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There's been a problem ==>" + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+        }
+
+        //Refesh Form
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            DisplayProduct();
+            DisplayStoreID();
+            DisplayCustomerID();
+            DisplaySalesID();
+            tabPage5.Update();
+            tabPage5.Refresh();
+
+        }
+
+        private void btnLoadStrore_Click(object sender, EventArgs e)
+        {
+            GetStoreSP();
+            tabPage4.Update();
+            tabPage4.Refresh();
         }
     }
 }

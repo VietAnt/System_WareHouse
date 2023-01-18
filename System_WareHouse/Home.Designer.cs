@@ -75,10 +75,11 @@ namespace System_WareHouse
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label34 = new System.Windows.Forms.Label();
+            this.SPStroreDGV = new System.Windows.Forms.DataGridView();
+            this.txtSPStore = new System.Windows.Forms.TextBox();
+            this.btnPersonUpdate = new System.Windows.Forms.Button();
             this.PersonDGV = new System.Windows.Forms.DataGridView();
-            this.cbPersonStore = new System.Windows.Forms.ComboBox();
-            this.dimStoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sale_DWDataSet = new System_WareHouse.Sale_DWDataSet();
             this.btnPersonDelete = new System.Windows.Forms.Button();
             this.btnPersonAdd = new System.Windows.Forms.Button();
             this.txtPersonCountry = new System.Windows.Forms.TextBox();
@@ -126,6 +127,8 @@ namespace System_WareHouse
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.dimStoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sale_DWDataSet = new System_WareHouse.Sale_DWDataSet();
             this.dimSalesPersonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sale_DWDataSet3 = new System_WareHouse.Sale_DWDataSet3();
             this.dimCustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -136,7 +139,9 @@ namespace System_WareHouse
             this.dimProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dimProductTableAdapter = new System_WareHouse.Sale_DWDataSet2TableAdapters.DimProductTableAdapter();
             this.dimSalesPersonTableAdapter = new System_WareHouse.Sale_DWDataSet3TableAdapters.DimSalesPersonTableAdapter();
-            this.btnPersonUpdate = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnLoadStrore = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductDGV)).BeginInit();
@@ -145,15 +150,16 @@ namespace System_WareHouse
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StoreDGV)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SPStroreDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonDGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dimStoresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PSSalesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSCustomerDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSStoreDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSProductDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSalesDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dimStoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dimSalesPersonBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dimCustomerBindingSource)).BeginInit();
@@ -631,9 +637,12 @@ namespace System_WareHouse
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnLoadStrore);
+            this.tabPage4.Controls.Add(this.label34);
+            this.tabPage4.Controls.Add(this.SPStroreDGV);
+            this.tabPage4.Controls.Add(this.txtSPStore);
             this.tabPage4.Controls.Add(this.btnPersonUpdate);
             this.tabPage4.Controls.Add(this.PersonDGV);
-            this.tabPage4.Controls.Add(this.cbPersonStore);
             this.tabPage4.Controls.Add(this.btnPersonDelete);
             this.tabPage4.Controls.Add(this.btnPersonAdd);
             this.tabPage4.Controls.Add(this.txtPersonCountry);
@@ -654,6 +663,51 @@ namespace System_WareHouse
             this.tabPage4.Text = "SalesPerson";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(762, 14);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(42, 20);
+            this.label34.TabIndex = 19;
+            this.label34.Text = "Store";
+            // 
+            // SPStroreDGV
+            // 
+            this.SPStroreDGV.AllowUserToAddRows = false;
+            this.SPStroreDGV.AllowUserToDeleteRows = false;
+            this.SPStroreDGV.AllowUserToResizeColumns = false;
+            this.SPStroreDGV.AllowUserToResizeRows = false;
+            this.SPStroreDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.SPStroreDGV.BackgroundColor = System.Drawing.Color.White;
+            this.SPStroreDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SPStroreDGV.Location = new System.Drawing.Point(492, 37);
+            this.SPStroreDGV.MultiSelect = false;
+            this.SPStroreDGV.Name = "SPStroreDGV";
+            this.SPStroreDGV.ReadOnly = true;
+            this.SPStroreDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SPStroreDGV.Size = new System.Drawing.Size(590, 255);
+            this.SPStroreDGV.TabIndex = 18;
+            this.SPStroreDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SPStroreDGV_CellContentClick);
+            // 
+            // txtSPStore
+            // 
+            this.txtSPStore.Location = new System.Drawing.Point(298, 211);
+            this.txtSPStore.Name = "txtSPStore";
+            this.txtSPStore.Size = new System.Drawing.Size(165, 20);
+            this.txtSPStore.TabIndex = 17;
+            // 
+            // btnPersonUpdate
+            // 
+            this.btnPersonUpdate.Location = new System.Drawing.Point(166, 269);
+            this.btnPersonUpdate.Name = "btnPersonUpdate";
+            this.btnPersonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnPersonUpdate.TabIndex = 16;
+            this.btnPersonUpdate.Text = "UPDATE";
+            this.btnPersonUpdate.UseVisualStyleBackColor = true;
+            this.btnPersonUpdate.Click += new System.EventHandler(this.btnPersonUpdate_Click);
+            // 
             // PersonDGV
             // 
             this.PersonDGV.AllowUserToAddRows = false;
@@ -663,38 +717,18 @@ namespace System_WareHouse
             this.PersonDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.PersonDGV.BackgroundColor = System.Drawing.Color.White;
             this.PersonDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PersonDGV.Location = new System.Drawing.Point(41, 201);
+            this.PersonDGV.Location = new System.Drawing.Point(64, 311);
             this.PersonDGV.MultiSelect = false;
             this.PersonDGV.Name = "PersonDGV";
             this.PersonDGV.ReadOnly = true;
             this.PersonDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PersonDGV.Size = new System.Drawing.Size(658, 323);
+            this.PersonDGV.Size = new System.Drawing.Size(1018, 339);
             this.PersonDGV.TabIndex = 15;
             this.PersonDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PersonDGV_CellContentClick);
             // 
-            // cbPersonStore
-            // 
-            this.cbPersonStore.FormattingEnabled = true;
-            this.cbPersonStore.Location = new System.Drawing.Point(118, 121);
-            this.cbPersonStore.Name = "cbPersonStore";
-            this.cbPersonStore.Size = new System.Drawing.Size(153, 21);
-            this.cbPersonStore.TabIndex = 14;
-            this.cbPersonStore.SelectedIndexChanged += new System.EventHandler(this.cbPersonStore_SelectedIndexChanged);
-            this.cbPersonStore.SelectionChangeCommitted += new System.EventHandler(this.cbPersonStore_SelectionChangeCommitted);
-            // 
-            // dimStoresBindingSource
-            // 
-            this.dimStoresBindingSource.DataMember = "DimStores";
-            this.dimStoresBindingSource.DataSource = this.sale_DWDataSet;
-            // 
-            // sale_DWDataSet
-            // 
-            this.sale_DWDataSet.DataSetName = "Sale_DWDataSet";
-            this.sale_DWDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // btnPersonDelete
             // 
-            this.btnPersonDelete.Location = new System.Drawing.Point(611, 120);
+            this.btnPersonDelete.Location = new System.Drawing.Point(279, 269);
             this.btnPersonDelete.Name = "btnPersonDelete";
             this.btnPersonDelete.Size = new System.Drawing.Size(75, 23);
             this.btnPersonDelete.TabIndex = 13;
@@ -704,7 +738,7 @@ namespace System_WareHouse
             // 
             // btnPersonAdd
             // 
-            this.btnPersonAdd.Location = new System.Drawing.Point(611, 27);
+            this.btnPersonAdd.Location = new System.Drawing.Point(48, 269);
             this.btnPersonAdd.Name = "btnPersonAdd";
             this.btnPersonAdd.Size = new System.Drawing.Size(75, 23);
             this.btnPersonAdd.TabIndex = 12;
@@ -714,44 +748,45 @@ namespace System_WareHouse
             // 
             // txtPersonCountry
             // 
-            this.txtPersonCountry.Location = new System.Drawing.Point(390, 122);
+            this.txtPersonCountry.Location = new System.Drawing.Point(91, 212);
             this.txtPersonCountry.Name = "txtPersonCountry";
-            this.txtPersonCountry.Size = new System.Drawing.Size(172, 20);
+            this.txtPersonCountry.Size = new System.Drawing.Size(129, 20);
             this.txtPersonCountry.TabIndex = 11;
             this.txtPersonCountry.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // txtPersonState
             // 
-            this.txtPersonState.Location = new System.Drawing.Point(390, 71);
+            this.txtPersonState.Location = new System.Drawing.Point(298, 131);
             this.txtPersonState.Name = "txtPersonState";
-            this.txtPersonState.Size = new System.Drawing.Size(172, 20);
+            this.txtPersonState.Size = new System.Drawing.Size(165, 20);
             this.txtPersonState.TabIndex = 10;
+            this.txtPersonState.TextChanged += new System.EventHandler(this.txtPersonState_TextChanged);
             // 
             // txtPersonCity
             // 
-            this.txtPersonCity.Location = new System.Drawing.Point(390, 24);
+            this.txtPersonCity.Location = new System.Drawing.Point(298, 64);
             this.txtPersonCity.Name = "txtPersonCity";
-            this.txtPersonCity.Size = new System.Drawing.Size(172, 20);
+            this.txtPersonCity.Size = new System.Drawing.Size(165, 20);
             this.txtPersonCity.TabIndex = 9;
             // 
             // txtPersonName
             // 
-            this.txtPersonName.Location = new System.Drawing.Point(119, 71);
+            this.txtPersonName.Location = new System.Drawing.Point(91, 135);
             this.txtPersonName.Name = "txtPersonName";
-            this.txtPersonName.Size = new System.Drawing.Size(152, 20);
+            this.txtPersonName.Size = new System.Drawing.Size(129, 20);
             this.txtPersonName.TabIndex = 7;
             // 
             // txtPersonID
             // 
-            this.txtPersonID.Location = new System.Drawing.Point(119, 20);
+            this.txtPersonID.Location = new System.Drawing.Point(91, 61);
             this.txtPersonID.Name = "txtPersonID";
-            this.txtPersonID.Size = new System.Drawing.Size(152, 20);
+            this.txtPersonID.Size = new System.Drawing.Size(129, 20);
             this.txtPersonID.TabIndex = 6;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(304, 129);
+            this.label19.Location = new System.Drawing.Point(9, 215);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(76, 13);
             this.label19.TabIndex = 5;
@@ -760,7 +795,7 @@ namespace System_WareHouse
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(304, 74);
+            this.label18.Location = new System.Drawing.Point(226, 138);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(65, 13);
             this.label18.TabIndex = 4;
@@ -769,7 +804,7 @@ namespace System_WareHouse
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(312, 24);
+            this.label17.Location = new System.Drawing.Point(234, 64);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 13);
             this.label17.TabIndex = 3;
@@ -778,7 +813,7 @@ namespace System_WareHouse
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(38, 121);
+            this.label16.Location = new System.Drawing.Point(234, 211);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(43, 13);
             this.label16.TabIndex = 2;
@@ -787,7 +822,7 @@ namespace System_WareHouse
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(38, 78);
+            this.label15.Location = new System.Drawing.Point(9, 138);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 13);
             this.label15.TabIndex = 1;
@@ -796,7 +831,7 @@ namespace System_WareHouse
             // PersonID
             // 
             this.PersonID.AutoSize = true;
-            this.PersonID.Location = new System.Drawing.Point(38, 27);
+            this.PersonID.Location = new System.Drawing.Point(9, 61);
             this.PersonID.Name = "PersonID";
             this.PersonID.Size = new System.Drawing.Size(51, 13);
             this.PersonID.TabIndex = 0;
@@ -804,6 +839,7 @@ namespace System_WareHouse
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.btnRefresh);
             this.tabPage5.Controls.Add(this.txtPSSaleID);
             this.tabPage5.Controls.Add(this.txtPSCusID);
             this.tabPage5.Controls.Add(this.PSSalesDGV);
@@ -1051,7 +1087,7 @@ namespace System_WareHouse
             // 
             // btnPSAdd
             // 
-            this.btnPSAdd.Location = new System.Drawing.Point(483, 246);
+            this.btnPSAdd.Location = new System.Drawing.Point(472, 246);
             this.btnPSAdd.Name = "btnPSAdd";
             this.btnPSAdd.Size = new System.Drawing.Size(75, 23);
             this.btnPSAdd.TabIndex = 24;
@@ -2960,6 +2996,16 @@ namespace System_WareHouse
             this.label14.TabIndex = 0;
             this.label14.Text = "SaleNumber";
             // 
+            // dimStoresBindingSource
+            // 
+            this.dimStoresBindingSource.DataMember = "DimStores";
+            this.dimStoresBindingSource.DataSource = this.sale_DWDataSet;
+            // 
+            // sale_DWDataSet
+            // 
+            this.sale_DWDataSet.DataSetName = "Sale_DWDataSet";
+            this.sale_DWDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // dimSalesPersonBindingSource
             // 
             this.dimSalesPersonBindingSource.DataMember = "DimSalesPerson";
@@ -3006,15 +3052,32 @@ namespace System_WareHouse
             // 
             this.dimSalesPersonTableAdapter.ClearBeforeFill = true;
             // 
-            // btnPersonUpdate
+            // timer1
             // 
-            this.btnPersonUpdate.Location = new System.Drawing.Point(611, 71);
-            this.btnPersonUpdate.Name = "btnPersonUpdate";
-            this.btnPersonUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnPersonUpdate.TabIndex = 16;
-            this.btnPersonUpdate.Text = "UPDATE";
-            this.btnPersonUpdate.UseVisualStyleBackColor = true;
-            this.btnPersonUpdate.Click += new System.EventHandler(this.btnPersonUpdate_Click);
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.Location = new System.Drawing.Point(665, 246);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(80, 23);
+            this.btnRefresh.TabIndex = 46;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnLoadStrore
+            // 
+            this.btnLoadStrore.Location = new System.Drawing.Point(388, 269);
+            this.btnLoadStrore.Name = "btnLoadStrore";
+            this.btnLoadStrore.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadStrore.TabIndex = 20;
+            this.btnLoadStrore.Text = "REFRESH";
+            this.btnLoadStrore.UseVisualStyleBackColor = true;
+            this.btnLoadStrore.Click += new System.EventHandler(this.btnLoadStrore_Click);
             // 
             // Home
             // 
@@ -3042,9 +3105,8 @@ namespace System_WareHouse
             ((System.ComponentModel.ISupportInitialize)(this.StoreDGV)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SPStroreDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonDGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dimStoresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PSSalesDGV)).EndInit();
@@ -3052,6 +3114,8 @@ namespace System_WareHouse
             ((System.ComponentModel.ISupportInitialize)(this.PSStoreDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSProductDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSalesDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dimStoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dimSalesPersonBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sale_DWDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dimCustomerBindingSource)).EndInit();
@@ -3110,7 +3174,6 @@ namespace System_WareHouse
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnStoreUpdate;
         private System.Windows.Forms.DataGridView PersonDGV;
-        private System.Windows.Forms.ComboBox cbPersonStore;
         private System.Windows.Forms.Button btnPersonDelete;
         private System.Windows.Forms.Button btnPersonAdd;
         private System.Windows.Forms.TextBox txtPersonCountry;
@@ -3171,5 +3234,11 @@ namespace System_WareHouse
         private System.Windows.Forms.TextBox txtPSCusID;
         private System.Windows.Forms.TextBox txtPSSaleID;
         private System.Windows.Forms.Button btnPersonUpdate;
+        private System.Windows.Forms.TextBox txtSPStore;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.DataGridView SPStroreDGV;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnLoadStrore;
     }
 }

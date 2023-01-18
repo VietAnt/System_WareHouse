@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="System_WareHouse.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="System_WareHouse.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="System_WareHouse" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -534,14 +534,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System_WareHouse.exe" size="197040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System_WareHouse.exe" size="198576">
       <assemblyIdentity name="System_WareHouse" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CKamfYqbViLSGDUXeQw4pnkFeUggVhX0ZBRwNvThlRg=</dsig:DigestValue>
+        <dsig:DigestValue>AB6NaLAnr3v250QCyshKo31dkGXN6Ac6oXImoK5H2lQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -563,13 +563,13 @@
       <dsig:DigestValue>l/BM5LHa1X2RMTlXhTbt1YLXSiGrPPeOpc6ExTYrM+s=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="System_WareHouse.exe.config" size="2866">
+  <file name="System_WareHouse.exe.config" size="2871">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ipgWTFn4539V3GWOVIl5aDEhqMtfNKPrmKsUXRB/ro8=</dsig:DigestValue>
+      <dsig:DigestValue>cq20av+m+zHYPI7tZOoq8A4tyNLqjdSAAyvVFbc7Hl8=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
